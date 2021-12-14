@@ -3,7 +3,8 @@
 <form class="user-loc-form" name="userLocationForm" (ngSubmit)="isValid()">
     <h3 fxLayoutAlign="center">Where are you?</h3><br/>
     <div fxLayoutAlign="center">
-    <input required type="text"
+    <input required type="search" 
+           pattern="[a-zA-Z',.\s-]{1,30}"
            placeholder="Zip Code or City"
            aria-label="Zip Code or City"
            matInput
@@ -12,7 +13,7 @@
     <mat-icon>search</mat-icon>
   </button>
 </div>
-  <!-- <div *ngIf="userLocInput.touched && userLocInput.invalid">Please enter either a city or a zip code.</div> -->
+  <div class="error"fxLayoutAlign="center" *ngIf="userLocInput.invalid && submitted"> Please enter either a valid city or a zip code.</div>
   </form>
 </div>
 <br/>

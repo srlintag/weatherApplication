@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { environment } from '../../../environments/environment';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { CurrentWeatherComponent } from './current-weather.component';
+import { DatePipe } from '@angular/common';
 
 describe('CurrentWeatherComponent', () => {
   let component: CurrentWeatherComponent;
@@ -8,7 +10,9 @@ describe('CurrentWeatherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrentWeatherComponent ]
+      declarations: [ CurrentWeatherComponent ],
+      imports: [HttpClientTestingModule],
+      providers:[DatePipe]
     })
     .compileComponents();
   });

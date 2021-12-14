@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { map } from 'rxjs/operators';
 
 //Services
 import { UserLocationService } from '../../services/user-location.service';
@@ -40,8 +39,15 @@ export class CurrentWeatherComponent implements OnInit {
   getCurrentWeather(data:any){
       this.userLocationService.getCurrentWeather(data)
         .subscribe(res => { 
-          this.currentWeatherResp = res;
-          this.displayCurrentWeather();
+          if(res === undefined || null ){
+            console.log("error");
+            console.log(res);
+            this.showCard = false;
+          }
+          else{
+            this.currentWeatherResp = res;
+            this.displayCurrentWeather();
+          }
         });
   }
 
@@ -61,9 +67,5 @@ export class CurrentWeatherComponent implements OnInit {
     }
     this.weatherIconImgPath = '../../assets/weather-icons/'+weatherIconImgName+'-s.png';
   }
-
-  ngOnDestroy() {
-    this.currentWeatherResp.unsubscribe();
- }
 
 }

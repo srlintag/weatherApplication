@@ -4,7 +4,7 @@ import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

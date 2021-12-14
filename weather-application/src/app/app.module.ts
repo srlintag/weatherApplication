@@ -11,17 +11,18 @@ import { DatePipe } from '@angular/common';
 import { UserLocationComponent } from './components/user-location/user-location.component';
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
 import { FiveDayForecastComponent } from './components/five-day-forecast/five-day-forecast.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserLocationService } from './services/user-location.service';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
-import { UserLocationService } from './services/user-location.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -33,7 +34,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     UserLocationComponent,
-    HeaderComponent,
     CurrentWeatherComponent,
     FiveDayForecastComponent,
     FooterComponent
@@ -61,6 +61,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   bootstrap: [AppComponent],
   exports: [
+    UserLocationComponent,
+    CurrentWeatherComponent,
+    FiveDayForecastComponent,
+    FooterComponent
   ]
 })
 export class AppModule { }

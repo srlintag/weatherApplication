@@ -38,8 +38,15 @@ export class FiveDayForecastComponent implements OnInit {
   getFiveDayForecast(data:any){
     this.userLocationService.getFiveDayForecast(data)
       .subscribe(res => { 
-        this.forecastResp = res;
-        this.displayForecast(this.forecastResp);
+        if(res === undefined || null){
+          console.log(res);
+          this.showCard = false;
+        }
+        else{
+          this.forecastResp = res;
+          this.displayForecast(this.forecastResp);
+        }
+
       });
   }
 
@@ -67,11 +74,5 @@ export class FiveDayForecastComponent implements OnInit {
 
     this.dayIconPaths.push(iconPath);
 }
-
-ngOnDestroy() {
-  this.forecastResp.unsubscribe();
-}
-
-
 
 }
