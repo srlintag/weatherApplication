@@ -1,0 +1,19 @@
+ <div *ngIf="showCard" >
+  <h2 fxLayoutAlign="center">Current Weather for {{cityInfo.cityName}}, {{cityInfo.cityState}}, {{cityInfo.cityCountry}} </h2>
+<div fxLayoutAlign="center">
+  <div class="card">
+    <h4>{{currentWeatherResp[0].time}}</h4>
+  <div>
+    <p> 
+      {{currentWeatherResp[0].temperatureF}} &#8457;. <span>Feels like {{currentWeatherResp[0].realTempF}} &#8457;</span>
+    </p>
+      <img src="{{weatherIconImgPath}}" alt="Icon for {{currentWeatherResp[0].weatherText|lowercase}} weather"/>
+  </div>
+  <div>
+  <p>
+    {{currentWeatherResp[0].weatherText }}
+  </p> 
+  </div>
+</div>
+</div>
+</div>

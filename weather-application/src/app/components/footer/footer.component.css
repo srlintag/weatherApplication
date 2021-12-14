@@ -1,0 +1,12 @@
+.footer{
+    font-size: 10px;
+    color: white;
+}
+
+.footer a{
+    color: #6BB962;
+}
+
+.footer a:hover{
+    color: #43486E;
+}

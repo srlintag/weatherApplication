@@ -1,0 +1,25 @@
+
+<div fxLayout="row" fxLayoutAlign="center">
+<form class="user-loc-form" name="userLocationForm" (ngSubmit)="isValid()">
+    <h3 fxLayoutAlign="center">Where are you?</h3><br/>
+    <div fxLayoutAlign="center">
+    <input required type="text"
+           placeholder="Zip Code or City"
+           aria-label="Zip Code or City"
+           matInput
+           [formControl]="userLocInput">
+  <button class="search-button" type="submit" mat-icon-button aria-label="Search for location">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+  <!-- <div *ngIf="userLocInput.touched && userLocInput.invalid">Please enter either a city or a zip code.</div> -->
+  </form>
+</div>
+<br/>
+
+<div class="styling" *ngIf="showCurrentWeather && showForecast">
+<app-current-weather *ngIf="showCurrentWeather"></app-current-weather>
+<br/>
+<hr/>
+<app-five-day-forecast *ngIf="showForecast"></app-five-day-forecast>
+</div>

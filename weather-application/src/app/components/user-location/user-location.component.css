@@ -1,0 +1,46 @@
+.user-loc-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+.search-button{
+  color: #43486E;
+  background: #9AE17B;
+  margin-left: 10px;
+}
+
+.search-button:hover{
+  color: white; 
+  background: #43486E;
+}
+
+input {
+  border: none;
+  outline: none;
+  border: 3px solid white;
+  -webkit-transition: 0.5s;
+  transition: 0.2s;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+input:focus {
+  border: 3px solid #43486E;
+}
+
+h3{
+  color:white;
+  margin: 20px 0 0 0;
+}
+
+.styling{
+  background-color: #9AE17B;
+  border-radius: 10px;
+  padding:20px;
+}
+
+hr{
+  width: 30%;
+  border: 1px dashed #43486E;
+}
