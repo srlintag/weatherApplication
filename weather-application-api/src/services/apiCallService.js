@@ -43,43 +43,6 @@ exports.getFiveDayForecast = async function (data) {
         }
     }
 
-    // fiveDayForecastModel = [
-    //     {
-    //         "date": "Monday, December 13",
-    //         "tempMax": 66,
-    //         "tempMin": 57,
-    //         "dayIcon": 7,
-    //         "dayPhrase": "Cloudy"
-    //     },
-    //     {
-    //         "date": "Tuesday, December 14",
-    //         "tempMax": 77,
-    //         "tempMin": 64,
-    //         "dayIcon": 13,
-    //         "dayPhrase": "Mostly cloudy w/ showers"
-    //     },
-    //     {
-    //         "date": "Wednesday, December 15",
-    //         "tempMax": 83,
-    //         "tempMin": 68,
-    //         "dayIcon": 4,
-    //         "dayPhrase": "Intermittent clouds"
-    //     },
-    //     {
-    //         "date": "Thursday, December 16",
-    //         "tempMax": 81,
-    //         "tempMin": 64,
-    //         "dayIcon": 8,
-    //         "dayPhrase": "Dreary"
-    //     },
-    //     {
-    //         "date": "Friday, December 17",
-    //         "tempMax": 82,
-    //         "tempMin": 62,
-    //         "dayIcon": 6,
-    //         "dayPhrase": "Mostly cloudy"
-    //     }
-    // ];
 
     return fiveDayForecastModel;
 }
@@ -124,17 +87,6 @@ exports.getCurrentWeather = async function (data) {
         currentWeatherModel.push(createWeatherModel(info, int));
     }
 
-    // currentWeatherModel=[{
-    //     "time": "Dec 13, 2021, 3:23:00 PM",
-    //     "weatherText": "Cloudy",
-    //     "temperatureF": 68,
-    //     "temperatureC": 20,
-    //     "realTempF": 68,
-    //     "realTempC": 19.8,
-    //     "hasPrecipitation": false,
-    //     "weatherIcon": 7
-    // }];
-
     return currentWeatherModel;
 }
 
@@ -154,7 +106,6 @@ exports.getCityInformation = async function (data) {
 
     let info = res.data;
 
-    
     if(errorMsg){
         cityInformation = errorMsg;
     } else {
@@ -163,15 +114,6 @@ exports.getCityInformation = async function (data) {
         cityInformation.cityCountry = info[0].Country.ID;
         cityInformation.locationKey = info[0].Key;
     }
-
-
-
-    // cityInformation = {
-    //     "cityName": "San Antonio",
-    //     "cityState": "Texas",
-    //     "cityCountry": "US",
-    //     "locationKey": "351198"
-    // };
 
     return cityInformation;
 }
