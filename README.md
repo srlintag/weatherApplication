@@ -1,6 +1,6 @@
 # weatherApplication
 
-Weather Application written in Angular/Typescript with a Node.js/Express.js server. AccuWeather APIs used to detect current weather and forecasted weather at a specified location. 
+Weather Application written in Angular/Typescript with a Node.js/Express.js server. AccuWeather APIs used to detect current weather and forecasted weather at a specified location. Unit tests ran in JEST.
 
 In a terminal with NPM, run: 
 
