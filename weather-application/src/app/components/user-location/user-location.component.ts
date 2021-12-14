@@ -31,9 +31,8 @@ export class UserLocationComponent implements OnInit {
 
   }
 
-  submitForm(){
-    this.userInput = this.userLocInput.value;
-    this.userLocationService.setNewCityInformation(this.userInput).subscribe(info=>{
+  submitForm(input:any){
+    this.userLocationService.setNewCityInformation(input).subscribe(info=>{
     this.showWeather();
     });
   }
@@ -44,7 +43,7 @@ export class UserLocationComponent implements OnInit {
     
     if(this.userLocInput.valid){
       this.submitted = false;
-      this.submitForm();
+      this.submitForm(this.userLocInput.value);
     }
     else{
       this.submitted = true;

@@ -13,11 +13,11 @@
     }];
     
 const cityInformation = {
-        "cityName": "San Antonio",
-        "cityState": "Texas",
-        "cityCountry": "US",
-        "locationKey": "351198"
-    };
+    cityCountry: "US",
+    cityName: "North Little Rock",
+    cityState: "Arkansas",
+    locationKey: "31214_PC"
+};
 
 const fiveDayForecastModel = [
     {
