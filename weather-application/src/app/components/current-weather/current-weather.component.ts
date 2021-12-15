@@ -52,7 +52,7 @@ export class CurrentWeatherComponent implements OnInit {
             this.showCard = false;
           }
           else{
-            this.currentWeatherResp = res;
+            this.currentWeatherResp = res[0];
             this.displayCurrentWeather();
           }
         });
@@ -60,17 +60,17 @@ export class CurrentWeatherComponent implements OnInit {
 
   displayCurrentWeather(){
       this.displayWeatherIcon(this.currentWeatherResp);
-      this.currentWeatherResp[0].time = this.datePipe.transform(this.currentWeatherResp[0].time, "MMM d, h:mm a");
+      this.currentWeatherResp.time = this.datePipe.transform(this.currentWeatherResp.time, "MMM d, h:mm a");
       this.showCard = true;
   }
 
   displayWeatherIcon(model: any){
     var weatherIconImgName; 
-    if(model[0].weatherIcon < 10){
-      weatherIconImgName = model[0].weatherIcon.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    if(model.weatherIcon < 10){
+      weatherIconImgName = model.weatherIcon.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
     }
     else{
-      weatherIconImgName = model[0].weatherIcon;
+      weatherIconImgName = model.weatherIcon;
     }
     this.weatherIconImgPath = '../../assets/weather-icons/'+weatherIconImgName+'-s.png';
   }

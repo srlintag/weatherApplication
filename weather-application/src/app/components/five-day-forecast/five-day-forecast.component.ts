@@ -14,7 +14,6 @@ export class FiveDayForecastComponent implements OnInit {
   forecastResp: any; 
   forecastModel: any; 
   weatherIconImgPath: any; 
-  cityName: string = '';
   locationKey: any; 
   showCard: boolean=false;
   dayIconPaths: string []= [];
