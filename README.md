@@ -21,3 +21,10 @@ To start the JEST unit tests, use `npx jest`. All unit tests are located inside 
 - current-weather.component.spec.ts
 
 Mock data is inside src/mocks
+
+Because AccuWeather only allows 50 calls/day, here are more keys to use in case the others stop working. 
+boVXpUGpSe0A8jYAWJG5UPPjLTwnVt1b  
+omeBHCMicRqZSQmP0TRWGNT0FYlUTgSt  
+mRHhw4EE2GgtGa9Oz8qXwU01A24Vnz8D  
+qYLcrAQzNYl2XJ0LsLVAmcIeKXzM6ine  
+CrmBt6vi5vCvceJwGyXiphvMqyVUR55x  
