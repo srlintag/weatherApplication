@@ -7,6 +7,8 @@ router.get('/getCityInformation', async function (req , res, next) {
     var data = encodeURI(req.query.location);
     try{
         let startCall = await apiCallService.getCityInformation(data);
+        console.log("?????????????????");
+        console.log(startCall);
         res.send(startCall); 
     } catch (error) {
         next (error);
