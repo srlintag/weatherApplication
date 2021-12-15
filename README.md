@@ -10,7 +10,7 @@ In a terminal with NPM, run:
 
 Then do `npm start` in the root of both folders to start the UI and server. 
 
-weather-aplication (UI) + weather-application-api (Server-side)
+weather-application (UI) + weather-application-api (Server-side)
 
 weather-application	
 To start the JEST unit tests, use `npx jest`. All unit tests are located inside .spec.ts files
