@@ -11,7 +11,6 @@ import { UserLocationService } from '../../services/user-location.service';
 })
 export class FiveDayForecastComponent implements OnInit {
 
-  showForecast: boolean = false; 
   forecastResp: any; 
   forecastModel: any; 
   weatherIconImgPath: any; 
@@ -19,6 +18,7 @@ export class FiveDayForecastComponent implements OnInit {
   locationKey: any; 
   showCard: boolean=false;
   dayIconPaths: string []= [];
+  serverError: boolean = false; 
 
   constructor(    
     private userLocationService: UserLocationService,
@@ -30,16 +30,24 @@ export class FiveDayForecastComponent implements OnInit {
 
   getLocationKey(){
     this.userLocationService.getCityInformation().subscribe((data:any) => { 
-      this.locationKey = data.locationKey;
-      this.getFiveDayForecast(this.locationKey);
+      if( Object.keys(data).length === 0 || data === undefined){
+        this.serverError = true;
+        this.showCard = false;
+      }
+      else
+      {
+        this.serverError = false;
+        this.locationKey = data.locationKey;
+        this.getFiveDayForecast(this.locationKey);
+      }
     });;
   }
 
   getFiveDayForecast(data:any){
     this.userLocationService.getFiveDayForecast(data)
-      .subscribe(res => { 
-        if(res === undefined || null){
-          console.log(res);
+      .subscribe((res:any) => { 
+        if(Object.keys(res).length === 0 || res === undefined){
+          this.serverError = true; 
           this.showCard = false;
         }
         else{

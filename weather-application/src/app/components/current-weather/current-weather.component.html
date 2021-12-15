@@ -1,3 +1,4 @@
+<h2 *ngIf="serverError" fxLayoutAlign="center"> Oops, the current weather escaped. Please try again later.</h2>
  <div *ngIf="showCard" >
   <h2 fxLayoutAlign="center">Current Weather for {{cityInfo.cityName}}, {{cityInfo.cityState}}, {{cityInfo.cityCountry}} </h2>
 <div fxLayoutAlign="center">

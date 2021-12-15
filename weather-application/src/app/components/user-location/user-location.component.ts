@@ -17,9 +17,10 @@ export class UserLocationComponent implements OnInit {
   locationId: any;
   userInput: any;
   cityInfoResp: any;
-  showForecast: boolean = false; 
+  showFiveDayForecast: boolean = false; 
   showCurrentWeather: boolean = false; 
   submitted: boolean = false;
+  serverError: boolean = false; 
 
   //autoLocations: string[] = ['Little Rock', 'Chicago', 'San Francisco'];
 
@@ -32,14 +33,14 @@ export class UserLocationComponent implements OnInit {
   }
 
   submitForm(input:any){
-    this.userLocationService.setNewCityInformation(input).subscribe(info=>{
-    this.showWeather();
+    this.userLocationService.setNewCityInformation(input).subscribe((info:any)=>{
+        this.showWeather();
     });
   }
 
   isValid() {
     this.showCurrentWeather = false;
-    this.showForecast = false; 
+    this.showFiveDayForecast = false; 
     
     if(this.userLocInput.valid){
       this.submitted = false;
@@ -51,8 +52,11 @@ export class UserLocationComponent implements OnInit {
   }
 
   showWeather(){
+    this.serverError = false; 
     this.showCurrentWeather = true;
-    this.showForecast = true; 
+    this.showFiveDayForecast = true; 
   }
+
+
 
 }

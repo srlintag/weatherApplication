@@ -18,6 +18,7 @@ export class CurrentWeatherComponent implements OnInit {
   cityInfo: any;
   locationKey:any;
   showCard:boolean=false;
+  serverError: boolean=false; 
 
   constructor(
     private userLocationService: UserLocationService,
@@ -30,18 +31,24 @@ export class CurrentWeatherComponent implements OnInit {
 
   getLocationKey(){
       this.userLocationService.getCityInformation().subscribe((data:any) => { 
-        this.cityInfo = data;
-        this.locationKey = data.locationKey;
-        this.getCurrentWeather(this.locationKey);
+        if( Object.keys(data).length === 0 || data == undefined){
+          this.serverError = true;
+          this.showCard = false;
+        }
+        else
+        {
+          this.cityInfo = data;
+          this.locationKey = data.locationKey;
+          this.getCurrentWeather(this.locationKey);
+        }
       });;
   }
 
   getCurrentWeather(data:any){
       this.userLocationService.getCurrentWeather(data)
-        .subscribe(res => { 
-          if(res === undefined || null ){
-            console.log("error");
-            console.log(res);
+        .subscribe((res:any) => { 
+          if(Object.keys(res).length === 0|| res === undefined){
+            this.serverError = true; 
             this.showCard = false;
           }
           else{

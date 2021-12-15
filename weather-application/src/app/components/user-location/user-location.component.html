@@ -4,22 +4,24 @@
     <h3 fxLayoutAlign="center">Where are you?</h3><br/>
     <div fxLayoutAlign="center">
     <input required type="search" 
-           placeholder="Zip Code or City"
-           aria-label="Zip Code or City"
+           pattern = "[a-zA-Z',.\s-]{1,30}$"
+           placeholder="City Name"
+           aria-label="City"
            matInput
            [formControl]="userLocInput">
   <button class="search-button" type="submit" mat-icon-button aria-label="Search for location">
     <mat-icon>search</mat-icon>
   </button>
 </div>
-  <div class="error"fxLayoutAlign="center" *ngIf="userLocInput.invalid && submitted"> Please enter either a valid city or a zip code.</div>
+  <div class="error"fxLayoutAlign="center" *ngIf="userLocInput.invalid && submitted"> Please enter either a valid city name only.</div>
   </form>
 </div>
 <br/>
+<h2 *ngIf="serverError" fxLayoutAlign="center"> It's raining somewhere on the servers. Please try again later.</h2>
 
-<div class="styling" *ngIf="showCurrentWeather && showForecast">
-<app-current-weather *ngIf="showCurrentWeather"></app-current-weather>
+<div class="styling" *ngIf="showCurrentWeather && showFiveDayForecast">
+<app-current-weather></app-current-weather>
 <br/>
 <hr/>
-<app-five-day-forecast *ngIf="showForecast"></app-five-day-forecast>
+<app-five-day-forecast></app-five-day-forecast>
 </div>

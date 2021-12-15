@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams  } from '@angular/common/http';
 
-import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, catchError, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
@@ -31,7 +31,11 @@ export class UserLocationService {
     let params = new HttpParams().set('location', query);
 
     return this.http.get<any>(this.cityInformationURI,{params: params})
-      .pipe(map((response: any) =>  this.setCityInformation(response)));
+      .pipe(map((response: any) =>  this.setCityInformation(response),
+        catchError( err => { 
+          console.log('Error in City Information Service ', err);
+          return throwError(() => new Error (err));
+        } )));
   }
 
   public getCityInformation(){
@@ -46,10 +50,6 @@ export class UserLocationService {
   public getFiveDayForecast(data:any){
     let params = new HttpParams().set('locationKey', data);
     return this.http.get(this.fiveDayForecastURI, { params: params });
-  }
-
-  private handleError(error : any) {
-    throwError(() => new Error(error));
   }
 
 }
