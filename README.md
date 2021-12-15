@@ -8,7 +8,7 @@ In a terminal with NPM, run:
 
 `npm install` inside both folders
 
-Then do `npm start` in the root of both folders to start the UI and server. 
+Then do `npm start` in the root of both folders to start the UI and server. Go to localhost:4200 to see the site. 
 
 weather-application (UI) + weather-application-api (Server-side)
 
