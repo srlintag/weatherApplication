@@ -28,6 +28,7 @@ export class FiveDayForecastComponent implements OnInit {
   }
 
   getLocationKey(){
+    this.serverError = false;
     this.userLocationService.getCityInformation().subscribe((data:any) => { 
       if( Object.keys(data).length === 0 || data === undefined){
         this.serverError = true;
@@ -39,10 +40,16 @@ export class FiveDayForecastComponent implements OnInit {
         this.locationKey = data.locationKey;
         this.getFiveDayForecast(this.locationKey);
       }
-    });;
+    },
+    err => { 
+      if(err){
+        this.serverError = true;
+      }
+    });
   }
 
   getFiveDayForecast(data:any){
+    this.serverError = false;
     this.userLocationService.getFiveDayForecast(data)
       .subscribe((res:any) => { 
         if(Object.keys(res).length === 0 || res === undefined){
@@ -53,7 +60,11 @@ export class FiveDayForecastComponent implements OnInit {
           this.forecastResp = res;
           this.displayForecast(this.forecastResp);
         }
-
+    }, err => { 
+        if(err){
+          this.serverError = true;
+          console.log(err);
+        }
       });
   }
 

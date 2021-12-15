@@ -30,6 +30,7 @@ export class CurrentWeatherComponent implements OnInit {
   }
 
   getLocationKey(){
+    this.serverError = false;
       this.userLocationService.getCityInformation().subscribe((data:any) => { 
         if( Object.keys(data).length === 0 || data == undefined){
           this.serverError = true;
@@ -40,11 +41,17 @@ export class CurrentWeatherComponent implements OnInit {
           this.cityInfo = data;
           this.locationKey = data.locationKey;
           this.getCurrentWeather(this.locationKey);
+        }},
+      err => { 
+        if(err){
+          this.serverError = true;
+          console.log(err);
         }
-      });;
+      });
   }
 
   getCurrentWeather(data:any){
+    this.serverError = false;
       this.userLocationService.getCurrentWeather(data)
         .subscribe((res:any) => { 
           if(Object.keys(res).length === 0|| res === undefined){
@@ -53,14 +60,19 @@ export class CurrentWeatherComponent implements OnInit {
           }
           else{
             this.currentWeatherResp = res[0];
-            this.displayCurrentWeather();
-          }
-        });
+            this.displayCurrentWeather(this.currentWeatherResp);
+          }},
+      err => { 
+        if(err){
+          this.serverError = true;
+          console.log(err);
+        }
+      });
   }
 
-  displayCurrentWeather(){
-      this.displayWeatherIcon(this.currentWeatherResp);
-      this.currentWeatherResp.time = this.datePipe.transform(this.currentWeatherResp.time, "MMM d, h:mm a");
+  displayCurrentWeather(model: any){
+      this.displayWeatherIcon(model);
+      model.time = this.datePipe.transform(model.time, "MMM d, h:mm a");
       this.showCard = true;
   }
 
