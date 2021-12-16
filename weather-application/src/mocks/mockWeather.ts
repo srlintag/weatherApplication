@@ -1,60 +1,60 @@
 
- const userInput=72116;
+ const userInput="Little Rock";
+ const locationKey="326862";
  
  const currentWeatherModel=[{
-        "time": "Dec 13, 2021, 3:23:00 PM",
-        "weatherText": "Cloudy",
-        "temperatureF": 68,
-        "temperatureC": 20,
-        "realTempF": 68,
-        "realTempC": 19.8,
-        "hasPrecipitation": false,
-        "weatherIcon": 7
-    }];
-    
+    "time": "2021-12-15T16:33:00-06:00",
+    "weatherText": "Mostly cloudy",
+    "temperatureF": 71,
+    "temperatureC": 21.7,
+    "realTempF": 68,
+    "realTempC": 20,
+    "weatherIcon": 6
+  }];
+
 const cityInformation = {
-    cityCountry: "US",
-    cityName: "North Little Rock",
-    cityState: "Arkansas",
-    locationKey: "31214_PC"
-};
+  "cityName": "Little Rock",
+  "cityState": "Arkansas",
+  "cityCountry": "US",
+  "locationKey": "326862"
+}
 
 const fiveDayForecastModel = [
     {
-        "date": "Monday, December 13",
-        "tempMax": 66,
-        "tempMin": 57,
-        "dayIcon": 7,
-        "dayPhrase": "Cloudy"
-    },
-    {
-        "date": "Tuesday, December 14",
-        "tempMax": 77,
-        "tempMin": 64,
-        "dayIcon": 13,
-        "dayPhrase": "Mostly cloudy w/ showers"
-    },
-    {
-        "date": "Wednesday, December 15",
-        "tempMax": 83,
-        "tempMin": 68,
-        "dayIcon": 4,
-        "dayPhrase": "Intermittent clouds"
-    },
-    {
-        "date": "Thursday, December 16",
-        "tempMax": 81,
-        "tempMin": 64,
-        "dayIcon": 8,
-        "dayPhrase": "Dreary"
-    },
-    {
-        "date": "Friday, December 17",
-        "tempMax": 82,
-        "tempMin": 62,
+        "date": "2021-12-15T07:00:00-06:00",
+        "tempMax": 69,
+        "tempMin": 66,
         "dayIcon": 6,
         "dayPhrase": "Mostly cloudy"
+    },
+    {
+        "date": "2021-12-16T07:00:00-06:00",
+        "tempMax": 72,
+        "tempMin": 54,
+        "dayIcon": 18,
+        "dayPhrase": "Rain"
+    },
+    {
+        "date": "2021-12-17T07:00:00-06:00",
+        "tempMax": 71,
+        "tempMin": 54,
+        "dayIcon": 15,
+        "dayPhrase": "Thunderstorms"
+    },
+    {
+        "date": "2021-12-18T07:00:00-06:00",
+        "tempMax": 57,
+        "tempMin": 28,
+        "dayIcon": 15,
+        "dayPhrase": "Thunderstorms"
+    },
+    {
+        "date": "2021-12-19T07:00:00-06:00",
+        "tempMax": 40,
+        "tempMin": 25,
+        "dayIcon": 3,
+        "dayPhrase": "Partly sunny"
     }
 ];
 
-export { userInput, currentWeatherModel, cityInformation, fiveDayForecastModel};
+export { userInput, locationKey, currentWeatherModel, cityInformation, fiveDayForecastModel};

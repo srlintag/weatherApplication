@@ -13,7 +13,6 @@ export class CurrentWeatherComponent implements OnInit {
 
   showCurrentWeather: boolean = false; 
   currentWeatherResp: any; 
-  currentWeatherModel: any; 
   weatherIconImgPath: any; 
   cityInfo: any;
   locationKey:any;
@@ -52,15 +51,15 @@ export class CurrentWeatherComponent implements OnInit {
 
   getCurrentWeather(data:any){
     this.serverError = false;
-      this.userLocationService.getCurrentWeather(data)
-        .subscribe((res:any) => { 
+    return this.userLocationService.getCurrentWeather(data)
+        .subscribe((res) => { 
           if(Object.keys(res).length === 0|| res === undefined){
             this.serverError = true; 
             this.showCard = false;
           }
           else{
             this.currentWeatherResp = res[0];
-            this.displayCurrentWeather(this.currentWeatherResp);
+            this.displayCurrentWeather(res[0]);
           }},
       err => { 
         if(err){
