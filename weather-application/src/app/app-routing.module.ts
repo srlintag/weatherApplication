@@ -5,8 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 const routes: Routes = [];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MatIconModule],
-  exports: [RouterModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+	imports: [RouterModule.forRoot(routes), MatIconModule],
+	exports: [RouterModule],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRoutingModule { }

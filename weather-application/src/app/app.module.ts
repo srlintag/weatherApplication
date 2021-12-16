@@ -31,40 +31,40 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserLocationComponent,
-    CurrentWeatherComponent,
-    FiveDayForecastComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatExpansionModule,
-    FlexLayoutModule
-  ],
-  providers: [
-    UserLocationService,
-    DatePipe
-  ],
-  bootstrap: [AppComponent],
-  exports: [
-    UserLocationComponent,
-    CurrentWeatherComponent,
-    FiveDayForecastComponent,
-    FooterComponent
-  ]
+	declarations: [
+		AppComponent,
+		UserLocationComponent,
+		CurrentWeatherComponent,
+		FiveDayForecastComponent,
+		FooterComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatNativeDateModule,
+		MatInputModule,
+		MatAutocompleteModule,
+		MatCardModule,
+		MatButtonModule,
+		MatIconModule,
+		MatExpansionModule,
+		FlexLayoutModule
+	],
+	providers: [
+		UserLocationService,
+		DatePipe
+	],
+	bootstrap: [AppComponent],
+	exports: [
+		UserLocationComponent,
+		CurrentWeatherComponent,
+		FiveDayForecastComponent,
+		FooterComponent
+	]
 })
 export class AppModule { }

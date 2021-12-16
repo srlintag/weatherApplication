@@ -5,60 +5,60 @@ import { FormControl, RangeValueAccessor, Validators } from '@angular/forms';
 import { UserLocationService } from '../../services/user-location.service';
 
 @Component({
-  selector: 'app-user-location',
-  templateUrl: './user-location.component.html',
-  styleUrls: ['./user-location.component.css']
+	selector: 'app-user-location',
+	templateUrl: './user-location.component.html',
+	styleUrls: ['./user-location.component.css']
 })
 export class UserLocationComponent implements OnInit {
 
-  cityName: string ='';
-  userLocInput = new FormControl('', [Validators.required]);
-  locations: any;
-  locationId: any;
-  userInput: any;
-  cityInfoResp: any;
-  showFiveDayForecast: boolean = false; 
-  showCurrentWeather: boolean = false; 
-  submitted: boolean = false;
-  serverError: boolean = false; 
+	cityName ='';
+	userLocInput = new FormControl('', [Validators.required]);
+	locations: any;
+	locationId: any;
+	userInput: any;
+	cityInfoResp: any;
+	showFiveDayForecast = false; 
+	showCurrentWeather = false; 
+	submitted = false;
+	serverError = false; 
 
-  //autoLocations: string[] = ['Little Rock', 'Chicago', 'San Francisco'];
+	//autoLocations: string[] = ['Little Rock', 'Chicago', 'San Francisco'];
 
-  constructor(
+	constructor(
     private userLocationService: UserLocationService
-  ) {}
+	) {}
 
-  ngOnInit(): void {
+	ngOnInit(): void {
 
-  }
+	}
 
-  submitForm(input:any){
-    this.serverError = false;
-    this.userLocationService.setNewCityInformation(input).subscribe((info:any)=>{
-        this.showWeather();
-    },
-      err => { 
-        if(err){
-          this.serverError = true;
-        }
-      });
-  }
+	submitForm(input:any){
+		this.serverError = false;
+		this.userLocationService.setNewCityInformation(input).subscribe((info:any)=>{
+			this.showWeather();
+		},
+		err => { 
+			if(err){
+				this.serverError = true;
+			}
+		});
+	}
 
-  isValid(input:any) {   
-    if(input.valid){
-      this.submitted = false;
-      this.submitForm(input.value);
-    }
-    else{
-      this.submitted = true;
-    }
-  }
+	isValid(input:any) {   
+		if(input.valid){
+			this.submitted = false;
+			this.submitForm(input.value);
+		}
+		else{
+			this.submitted = true;
+		}
+	}
 
-  showWeather(){
-    this.serverError = false; 
-    this.showCurrentWeather = true;
-    this.showFiveDayForecast = true; 
-  }
+	showWeather(){
+		this.serverError = false; 
+		this.showCurrentWeather = true;
+		this.showFiveDayForecast = true; 
+	}
 
 
 
