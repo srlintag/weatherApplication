@@ -31,12 +31,11 @@ export class CurrentWeatherComponent implements OnInit {
   getLocationKey(){
     this.serverError = false;
       this.userLocationService.getCityInformation().subscribe((data:any) => { 
-        if( Object.keys(data).length === 0 || data == undefined){
-          this.serverError = true;
+        if(data === "An error has occured, please try again later."  || data === undefined ){
+          this.serverError = true; 
           this.showCard = false;
         }
-        else
-        {
+        else{
           this.cityInfo = data;
           this.locationKey = data.locationKey;
           this.getCurrentWeather(this.locationKey);
@@ -53,7 +52,7 @@ export class CurrentWeatherComponent implements OnInit {
     this.serverError = false;
     return this.userLocationService.getCurrentWeather(data)
         .subscribe((res) => { 
-          if(Object.keys(res).length === 0|| res === undefined){
+          if(data === "An error has occured, please try again later."  || data === undefined ){
             this.serverError = true; 
             this.showCard = false;
           }

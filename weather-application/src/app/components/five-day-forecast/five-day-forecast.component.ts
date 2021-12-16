@@ -28,8 +28,8 @@ export class FiveDayForecastComponent implements OnInit {
   getLocationKey(){
     this.serverError = false;
     this.userLocationService.getCityInformation().subscribe((data:any) => { 
-      if( Object.keys(data).length === 0 || data === undefined){
-        this.serverError = true;
+      if(data === "An error has occured, please try again later."  || data === undefined ){
+        this.serverError = true; 
         this.showCard = false;
       }
       else
@@ -49,7 +49,7 @@ export class FiveDayForecastComponent implements OnInit {
     this.serverError = false;
     this.userLocationService.getFiveDayForecast(data)
       .subscribe((res:any) => { 
-        if(Object.keys(res).length === 0 || res === undefined){
+        if(res === "An error has occured, please try again later."  || res === undefined ){
           this.serverError = true; 
           this.showCard = false;
         }

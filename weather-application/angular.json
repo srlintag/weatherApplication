@@ -81,9 +81,21 @@
           "options": {
             "browserTarget": "weather-application:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "weather-application"
+  "defaultProject": "weather-application",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
