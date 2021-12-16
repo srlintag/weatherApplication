@@ -29,10 +29,15 @@ exports.getFiveDayForecast = async function (info) {
             });
              res.on('end', function () {
                 const response = JSON.parse(Buffer.concat(data).toString());
+                if(response.Code === "ServiceUnavailable"){
+                  console.log(response);
+                  fiveDayForecastModel = "An error has occured, please try again later.";
+                } else {
                 forecasts = response.DailyForecasts;
                 for(var i = 0; i < forecasts.length; i++){
                     fiveDayForecastModel.push(createForecastModel(forecasts, i));
                 }
+              }
             resolve(fiveDayForecastModel);
           });
           res.on('error', (err) => {
@@ -70,8 +75,14 @@ exports.getCurrentWeather = async function (info) {
              });
              res.on('end', function () {
                const response = JSON.parse(Buffer.concat(data).toString());
+               if(response.Code === "ServiceUnavailable"){
+                console.log(response);
+                currentWeatherModel = "An error has occured, please try again";
+              } else{
                 var int = 0;
                 currentWeatherModel.push(createWeatherModel(response, int));
+              }
+
              resolve(currentWeatherModel);
           });
           res.on('error', (err) => {
@@ -94,11 +105,16 @@ exports.getCityInformation = async function (info) {
         });
         res.on('end', function () {
           const response = JSON.parse(Buffer.concat(data).toString());
-
+          if(response.Code === "ServiceUnavailable"){
+            console.log(response);
+            cityInformation = "An error has occured, please try again later.";
+          }
+          else {
           cityInformation.cityName = response[0].LocalizedName;
           cityInformation.cityState = response[0].AdministrativeArea.LocalizedName; 
           cityInformation.cityCountry = response[0].Country.ID;
           cityInformation.locationKey = response[0].Key;
+          }
 
           resolve(cityInformation);
         });
