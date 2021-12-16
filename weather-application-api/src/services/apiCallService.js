@@ -1,6 +1,5 @@
 const https = require('https');
 const dotenv = require('dotenv');
-const axios = require ('axios');
 dotenv.config({ path: '../../.env' });
 const accuURI = process.env.accuURI;
 const apiKey = process.env.accuWeatherSecret;
