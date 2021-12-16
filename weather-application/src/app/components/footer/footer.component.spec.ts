@@ -24,5 +24,9 @@ describe('FooterComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have the paragraph with the class for footer showing', ()=> {
+    expect(fixture.debugElement.nativeElement.querySelector('.footer')).toBeTruthy;
+  });
+
   
 });

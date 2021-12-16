@@ -34,16 +34,11 @@ describe('CurrentWeatherComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should call the getLocationKey function', () => {
-  //   component.ngOnInit();
-  //   component.serverError = false;
-  //   expect(component.getLocationKey).toHaveBeenCalled();
-  // });
-  
   it('should call getCurrentWeather function', () => {
     spy = jest.spyOn(service, 'getCurrentWeather');
     component.getCurrentWeather(locationKey);
     expect(spy).toHaveBeenCalled;
+    spy.mockRestore();
     });
 
   it('serverError should be false for getLocationKey', () =>{
@@ -56,6 +51,7 @@ describe('CurrentWeatherComponent', () => {
     spy = jest.spyOn(service, 'getCityInformation');
     component.getLocationKey();
     expect(spy).toHaveBeenCalled;
+    spy.mockRestore();
   });
 
   it('should have serverError be false for getCurrentWeather', () =>{
@@ -81,7 +77,6 @@ describe('CurrentWeatherComponent', () => {
   it('should set the path to the weather icon', () => {
     component.displayWeatherIcon(model);
     component.showCard = true;
-    const compiled = fixture.nativeElement as HTMLElement;
     expect(component.weatherIconImgPath).toEqual("../../assets/weather-icons/06-s.png");
   });
 

@@ -12,9 +12,7 @@ import { UserLocationService } from '../../services/user-location.service';
 export class FiveDayForecastComponent implements OnInit {
 
   forecastResp: any; 
-  forecastModel: any; 
   weatherIconImgPath: any; 
-  locationKey: any; 
   showCard: boolean=false;
   dayIconPaths: string []= [];
   serverError: boolean = false; 
@@ -37,8 +35,7 @@ export class FiveDayForecastComponent implements OnInit {
       else
       {
         this.serverError = false;
-        this.locationKey = data.locationKey;
-        this.getFiveDayForecast(this.locationKey);
+        this.getFiveDayForecast(data.locationKey);
       }
     },
     err => { 
