@@ -44,10 +44,7 @@ export class UserLocationComponent implements OnInit {
       });
   }
 
-  isValid(input:any) {
-    this.showCurrentWeather = false;
-    this.showFiveDayForecast = false; 
-    
+  isValid(input:any) {   
     if(input.valid){
       this.submitted = false;
       this.submitForm(input.value);
