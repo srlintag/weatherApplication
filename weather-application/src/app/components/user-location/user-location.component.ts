@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, RangeValueAccessor, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 //Services
 import { UserLocationService } from '../../services/user-location.service';
@@ -13,9 +13,7 @@ export class UserLocationComponent implements OnInit {
 
 	cityName ='';
 	userLocInput = new FormControl('', [Validators.required]);
-	locations: any;
-	locationId: any;
-	userInput: any;
+	userInput = '';
 	cityInfoResp: any;
 	showFiveDayForecast = false; 
 	showCurrentWeather = false; 
@@ -28,13 +26,13 @@ export class UserLocationComponent implements OnInit {
     private userLocationService: UserLocationService
 	) {}
 
-	ngOnInit(): void {
-
+	ngOnInit() {
+		//required
 	}
 
-	submitForm(input:any){
+	submitForm(input:string){
 		this.serverError = false;
-		this.userLocationService.setNewCityInformation(input).subscribe((info:any)=>{
+		this.userLocationService.setNewCityInformation(input).subscribe(()=>{
 			this.showWeather();
 		},
 		err => { 
