@@ -2,17 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { environment } from '../../../environments/environment';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserLocationComponent } from './user-location.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { userInput } from '../../../mocks/mockWeather';
 import { UserLocationService } from '../../services/user-location.service';
-import { By } from '@angular/platform-browser';
 
 describe('UserLocationComponent', () => {
 	let component: UserLocationComponent;
 	let fixture: ComponentFixture<UserLocationComponent>;
-	let service: UserLocationService;
-	let spy: any;
+	//let service: UserLocationService;
+	//let spy: any;
 
 	beforeEach(async () => {
 
@@ -21,7 +19,7 @@ describe('UserLocationComponent', () => {
 			imports: [HttpClientTestingModule, ReactiveFormsModule, MatIconModule]
 		})
 			.compileComponents();
-		service = TestBed.inject(UserLocationService);
+		//service = TestBed.inject(UserLocationService);
 	});
 
 	beforeEach(() => {

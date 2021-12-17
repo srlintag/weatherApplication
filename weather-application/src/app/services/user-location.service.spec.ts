@@ -6,7 +6,7 @@ import { cityInformation, userInput, locationKey, currentWeatherModel, fiveDayFo
 describe('UserLocationService', () => {
 	let service: UserLocationService;
 	let httpTestingController: HttpTestingController;
-	let localUrl = 'http://localhost:8080'
+	const localUrl = 'http://localhost:8080';
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -51,7 +51,7 @@ describe('UserLocationService', () => {
 	it('should call setNewCityInformation and then call setCityInformation', () => {
 		service.setNewCityInformation(userInput).subscribe(data => {
 			expect(data).toEqual(service.currentInfo);
-		})
+		});
 	});
 
 });

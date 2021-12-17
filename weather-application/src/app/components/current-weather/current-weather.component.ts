@@ -13,11 +13,11 @@ export class CurrentWeatherComponent implements OnInit {
 
 	showCurrentWeather = false; 
 	currentWeatherResp: any;
-	weatherIconImgPath: string = ''; 
+	weatherIconImgPath = ''; 
 	cityInfo: any;
-	locationKey: string = '';
-	showCard: boolean = false;
-	serverError: boolean = false; 
+	locationKey = '';
+	showCard = false;
+	serverError = false; 
 
 	constructor(
     private userLocationService: UserLocationService,
@@ -30,14 +30,14 @@ export class CurrentWeatherComponent implements OnInit {
 
 	getLocationKey(){
 		this.serverError = false;
-		this.userLocationService.getCityInformation().subscribe((data:any) => { 
+		this.userLocationService.getCityInformation().subscribe((data:unknown) => { 
 			if(data === 'An error has occured, please try again later.'  || data === undefined ){
 				this.serverError = true; 
 				this.showCard = false;
 			}
 			else{
 				this.cityInfo = data;
-				this.locationKey = data.locationKey;
+				this.locationKey = this.cityInfo.locationKey;
 				this.getCurrentWeather(this.locationKey);
 			}},
 		err => { 
@@ -48,7 +48,7 @@ export class CurrentWeatherComponent implements OnInit {
 		});
 	}
 
-	getCurrentWeather(data:any){
+	getCurrentWeather(data:string){
 		this.serverError = false;
 		return this.userLocationService.getCurrentWeather(data)
 			.subscribe((res) => { 
@@ -57,8 +57,9 @@ export class CurrentWeatherComponent implements OnInit {
 					this.showCard = false;
 				}
 				else{
-					this.currentWeatherResp = res[0];
-					this.displayCurrentWeather(res[0]);
+					this.currentWeatherResp = res;
+					this.currentWeatherResp = this.currentWeatherResp[0];
+					this.displayCurrentWeather(this.currentWeatherResp);
 				}},
 			err => { 
 				if(err){

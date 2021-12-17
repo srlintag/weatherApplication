@@ -12,10 +12,12 @@ import { UserLocationService } from '../../services/user-location.service';
 export class FiveDayForecastComponent implements OnInit {
 
 	forecastResp: any;
-	weatherIconImgPath: string = ''; 
-	showCard: boolean = false;
+	weatherIconImgPath = ''; 
+	showCard = false;
 	dayIconPaths: string []= [];
-	serverError: boolean = false; 
+	serverError = false; 
+	cityInfo: any;
+	locationKey = '';
 
 	constructor(
     private userLocationService: UserLocationService,
@@ -27,7 +29,7 @@ export class FiveDayForecastComponent implements OnInit {
 
 	getLocationKey(){
 		this.serverError = false;
-		this.userLocationService.getCityInformation().subscribe((data:any) => { 
+		this.userLocationService.getCityInformation().subscribe((data:unknown) => { 
 			if(data === 'An error has occured, please try again later.'  || data === undefined ){
 				this.serverError = true; 
 				this.showCard = false;
@@ -35,7 +37,9 @@ export class FiveDayForecastComponent implements OnInit {
 			else
 			{
 				this.serverError = false;
-				this.getFiveDayForecast(data.locationKey);
+				this.cityInfo = data;
+				this.locationKey = this.cityInfo.locationKey;
+				this.getFiveDayForecast(this.locationKey);
 			}
 		},
 		err => { 
@@ -45,10 +49,10 @@ export class FiveDayForecastComponent implements OnInit {
 		});
 	}
 
-	getFiveDayForecast(data:any){
+	getFiveDayForecast(data:string){
 		this.serverError = false;
 		this.userLocationService.getFiveDayForecast(data)
-			.subscribe((res:any) => { 
+			.subscribe((res) => { 
 				if(res === 'An error has occured, please try again later.'  || res === undefined ){
 					this.serverError = true; 
 					this.showCard = false;
@@ -77,7 +81,6 @@ export class FiveDayForecastComponent implements OnInit {
 
 	pathDayWeatherIcon(model: any){
 		let weatherIconImgName;
-		let iconPath;
 
 		if(model.dayIcon < 10){
 			weatherIconImgName = model.dayIcon.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
@@ -85,7 +88,7 @@ export class FiveDayForecastComponent implements OnInit {
 		else{
 			weatherIconImgName = model.dayIcon;
 		}
-		iconPath = '../../assets/weather-icons/'+weatherIconImgName+'-s.png';
+		const iconPath = '../../assets/weather-icons/'+weatherIconImgName+'-s.png';
 
 		this.dayIconPaths.push(iconPath);
 	}
